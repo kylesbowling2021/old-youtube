@@ -1,0 +1,34 @@
+{
+  "name": "OldTube",
+  "version": "0.0.5",
+  "manifest_version": 2,
+  "content_scripts": [ {
+      "js": [ "template.js"],
+      "matches": [ "*://www.youtube.com/template*" ],
+      "run_at": "document_start"
+  },
+  {
+      "js": [ "oldtube.js"],
+      "matches": [ "*://www.youtube.com/*" ],
+      "run_at": "document_start"
+  }],
+   "web_accessible_resources":[
+    "oldtube.js",
+    "yts/*"
+  ],
+  "externally_connectable": {
+	"matches": ["*://www.youtube.com/*"]
+  },
+  "description": "Restore Old Youtube",
+  "homepage_url": "http://example.com",
+  "background": {
+    "scripts": [
+      "background.js",
+	  "page/homepage.js",
+	  "page/trending.js",
+	  "page/history.js"
+    ],
+    "persistent": true
+  },
+  "permissions": ["https://www.youtube.com/*", "storage", "webRequest", "webRequestBlocking", "webNavigation"]
+}
